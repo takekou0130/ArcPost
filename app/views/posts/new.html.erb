@@ -1,0 +1,11 @@
+<div class="post-container">
+    <div class="post-form text-center">
+        <h1 class="heading-message">Let's Post!!</h1>
+        <%= form_tag("/posts/create") do %>
+        <div class="form-body">
+            <textarea name="content"></textarea>
+            <input type="submit" value="シェア">
+        </div>  
+        <% end %>
+    </div>
+</div>

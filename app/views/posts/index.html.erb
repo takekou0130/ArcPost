@@ -1,0 +1,17 @@
+<div class="post-container">
+    <% @posts.each do |post|%>
+    <div class="post-index-item card">
+        <img src="#" class="card-img-top">
+        <%# 写真にする %>
+        <div class="card-body">
+        <h5 class="card-title">
+            ユーザー名
+            <%# ユーザー名にする %>
+        </h5>
+        <p class="card-text">
+          <%= post.content %>
+        </p>
+        </div>
+    </div>
+    <%end%>
+</div>
