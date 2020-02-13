@@ -1,0 +1,26 @@
+<div class="post-container">
+    <div class="post-index-item card">
+        <img src="#" class="card-img-top">
+             <%# 写真にする %>
+        <div class="card-body">
+        <h5 class="card-title">
+            ユーザー名
+            <%# ユーザー名にする %>
+        </h5>
+        <p class="card-text card-content">
+          <%= @post.content %>
+        </p>
+        <p class="card-text card-time">
+          <%= @post.updated_at %>
+        </p>
+         <ul class="card-text">
+            <li>
+                <%= link_to("編集", "/posts/#{@post.id}/edit")%>
+            </li>
+            <li>
+                <%= link_to("削除", "/posts/#{@post.id}/destroy") %>
+            </li>
+        </ul>
+        </div>
+    </div>
+</div>

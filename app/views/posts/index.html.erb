@@ -9,8 +9,9 @@
             <%# ユーザー名にする %>
         </h5>
         <p class="card-text">
-          <%= post.content %>
+          <%= link_to(post.content, "/posts/#{post.id}") %>
         </p>
+       
         </div>
     </div>
     <%end%>
