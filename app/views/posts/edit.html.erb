@@ -2,8 +2,11 @@
     <div class="post-form text-center">
         <%= form_tag("/posts/#{@post.id}/update") do %>
         <div class="form-body">
+            <p>コメント</p>
             <textarea name="content" value="<%= @post.content %>"></textarea>
+            <div class="submit-container">
             <input type="submit" value="編集">
+            </div>
         </div>  
         <% end %>
     </div>

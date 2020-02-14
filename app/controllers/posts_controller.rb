@@ -9,6 +9,11 @@ class PostsController < ApplicationController
   def create
     @post=Post.new(content: params[:content])
     @post.save
+    @post=Post.find_by(id: @post.id)
+    @post.image_name="#{@post.id}.jpg"
+    @post.save
+    image=params[:image]
+    File.binwrite("public/content_image/#{@post.image_name}", image.read)
     redirect_to("/posts/index")
   end
 

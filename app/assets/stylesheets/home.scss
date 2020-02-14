@@ -12,9 +12,14 @@
     opacity: 90%;
     padding: 100px;
 }
-h1{
-    font-size: 5rem;
+.home-top-content h1{
+    font-size: 4rem;
     letter-spacing: 0.2rem;
-    font-weight: 700;
+    font-weight: 500;
     font-family: sans-serif;
+}
+
+.home-top-content p{
+    font-size: 1.4rem;
+    margin: 20px auto 40px auto;
 }
