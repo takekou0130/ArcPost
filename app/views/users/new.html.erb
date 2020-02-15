@@ -1,0 +1,18 @@
+<div class="post-container">
+    <div class="post-form text-center">
+        <h1 class="heading-message">ユーザー登録</h1>
+        <%= form_tag("/users/create", {multipart: true}) do %>
+        <div class="form-body">
+            <p>ユーザー名</p>
+            <input name="name">
+             <p>メールアドレス</p>
+            <input name="email">
+            <%#<p>画像</p>
+            <input name="image", type="file">%>
+            <div class="submit-container">
+            <input type="submit" value="登録">
+            </div>
+        </div>  
+        <% end %>
+    </div>
+</div>

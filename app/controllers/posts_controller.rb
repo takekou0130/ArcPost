@@ -7,14 +7,20 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post=Post.new(content: params[:content])
-    @post.save
-    @post=Post.find_by(id: @post.id)
-    @post.image_name="#{@post.id}.jpg"
-    @post.save
     image=params[:image]
-    File.binwrite("public/content_image/#{@post.image_name}", image.read)
-    redirect_to("/posts/index")
+    if image
+      @post=Post.new(content: params[:content])
+      @post.save
+      @post=Post.find_by(id: @post.id)
+      @post.image_name="#{@post.id}.jpg"
+      @post.save
+      File.binwrite("public/content_image/#{@post.image_name}", image.read)
+      redirect_to("/posts/index")
+      flash[:notice]="投稿しました"
+    else
+      flash[:notice]="画像を選択してください"
+      render("posts/new")
+    end
   end
 
   def show
@@ -23,6 +29,7 @@ class PostsController < ApplicationController
   def destroy
     @post=Post.find_by(id: params[:id])
     @post.destroy
+    flash[:notice]="削除しました"
     redirect_to("/posts/index")
   end
   def edit
@@ -32,6 +39,7 @@ class PostsController < ApplicationController
     @post=Post.find_by(id: params[:id])
     @post.content=params[:content]
     @post.save
+    flash[:notice]="更新しました"
     redirect_to("/posts/index")
   end
 

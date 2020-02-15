@@ -1,0 +1,11 @@
+<div class="post-container">
+    <% @users.each do |user|%>
+    <div class="post-index-item card">
+        <div class="card-body">
+        <h5 class="card-title">
+            <%= user.name %>
+        </h5>
+        </div>
+    </div>
+    <%end%>
+</div>

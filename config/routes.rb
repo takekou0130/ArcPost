@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  # usersのルーティング
+  get "users/index" => "users#index"
+  get "users/new" => "users#new"
+  post "users/create" => "users#create"
+  
   # postsのルーティング
   get "posts/index" => "posts#index"
   get "posts/new" => "posts#new"
