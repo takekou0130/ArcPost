@@ -1,0 +1,20 @@
+<div class="post-container">
+    <div class="post-index-item card">
+        <div class="card-body">
+        <h5 class="card-title">
+            <%= @user.name %>
+        </h5>
+        <h5 class="card-title">
+            <%= @user.email%>
+        </h5>
+         <ul class="card-text">
+            <li>
+                <%= link_to("編集", "/users/#{@user.id}/edit")%>
+            </li>
+            <li>
+                <%= link_to("削除", "/users/#{@user.id}/destroy") %>
+            </li>
+        </ul>
+        </div>
+    </div>
+</div>

@@ -14,4 +14,25 @@ class UsersController < ApplicationController
       render("users/new")
     end
   end
+  def show
+    @user=User.find_by(id: params[:id])
+  end
+  def destroy
+    @user=User.find_by(id: params[:id])
+    @user.destroy
+    flash[:notice]="アカウントを削除しました"
+    redirect_to("/users/index")
+  end
+  def edit
+    @user=User.find_by(id: params[:id])
+  end
+  def update
+    @user=User.find_by(id: params[:id])
+    @user.name=params[:name]
+    @user.email=params[:email]
+    @user.save
+    flash[:notice]="アカウントを更新しました"
+    redirect_to("/users/index")
+  end
+  
 end

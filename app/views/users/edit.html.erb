@@ -1,0 +1,15 @@
+<div class="post-container">
+    <div class="post-form text-center">
+        <%= form_tag("/users/#{@user.id}/update") do %>
+        <div class="form-body">
+            <p>ユーザー名</p>
+            <input name="name" value="<%= @user.name %>">
+            <p>メールアドレス</p>
+            <input name="email" value="<%= @user.email %>">
+            <div class="submit-container">
+            <input type="submit" value="編集">
+            </div>
+        </div>  
+        <% end %>
+    </div>
+</div>

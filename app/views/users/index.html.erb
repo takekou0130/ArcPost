@@ -3,7 +3,7 @@
     <div class="post-index-item card">
         <div class="card-body">
         <h5 class="card-title">
-            <%= user.name %>
+            <%= link_to(user.name, "/users/#{user.id}") %>
         </h5>
         </div>
     </div>
