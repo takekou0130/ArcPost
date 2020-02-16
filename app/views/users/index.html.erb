@@ -1,8 +1,17 @@
 <div class="post-container">
     <% @users.each do |user|%>
-    <div class="post-index-item card">
-        <div class="card-body">
-        <h5 class="card-title">
+    <div class="post-index-item">
+        <div class="row">
+        <div class="col-4">
+            <img class="user_image" src="
+             <% if user.image_name==nil %>
+                <%= "/initial_user_icon.jpg" %>
+             <% else %>
+                <%= "/user_image/#{user.image_name}" %>
+             <% end %>
+            ">
+        </div>
+        <h5 class="col-8">
             <%= link_to(user.name, "/users/#{user.id}") %>
         </h5>
         </div>

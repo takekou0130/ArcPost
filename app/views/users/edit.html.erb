@@ -1,11 +1,13 @@
 <div class="post-container">
     <div class="post-form text-center">
-        <%= form_tag("/users/#{@user.id}/update") do %>
+        <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
         <div class="form-body">
             <p>ユーザー名</p>
             <input name="name" value="<%= @user.name %>">
             <p>メールアドレス</p>
             <input name="email" value="<%= @user.email %>">
+            <p>ユーザーアイコン</p>
+            <input name="image" type="file">
             <div class="submit-container">
             <input type="submit" value="編集">
             </div>

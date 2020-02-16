@@ -11,7 +11,6 @@ class PostsController < ApplicationController
     if image
       @post=Post.new(content: params[:content])
       @post.save
-      @post=Post.find_by(id: @post.id)
       @post.image_name="#{@post.id}.jpg"
       @post.save
       File.binwrite("public/content_image/#{@post.image_name}", image.read)

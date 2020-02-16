@@ -1,6 +1,13 @@
 <div class="post-container">
     <div class="post-index-item card">
         <div class="card-body">
+        <img class="user_image" src="
+             <% if @user.image_name==nil %>
+                <%= "/initial_user_icon.jpg" %>
+             <% else %>
+                <%= "/user_image/#{@user.image_name}" %>
+             <% end %>
+        ">
         <h5 class="card-title">
             <%= @user.name %>
         </h5>
