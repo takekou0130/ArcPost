@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  
   # usersのルーティング
+  post "logout" => "users#logout"
+  get "login" => "users#login_form"
+  post "login" => "users#login"
   get "users/index" => "users#index"
   get "users/new" => "users#new"
   post "users/create" => "users#create"

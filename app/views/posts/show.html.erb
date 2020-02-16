@@ -3,8 +3,15 @@
         <img src=" <%= "/content_image/#{@post.image_name}" %>" class="card-img-top">
         <div class="card-body">
         <h5 class="card-title">
-            ユーザー名
-            <%# ユーザー名にする %>
+        <% post_user=@post.user %>
+          <img src="
+            <% if post_user.image_name%>
+            <%= "/user_image/#{post_user.image_name}" %>
+            <% else%>
+            <%= "/initial_user_icon.jpg" %>
+            <% end %>
+            ">
+          <%= link_to(post_user.name, "/users/#{post_user.id}") %>
         </h5>
         <p class="card-text card-content">
           <%= @post.content %>
@@ -12,6 +19,7 @@
         <p class="card-text card-time">
           <%= @post.updated_at %>
         </p>
+        <%if @current_user.id==post_user.id %> <%#ユーザー本人の投稿の時だけ表示%>
          <ul class="card-text">
             <li>
                 <%= link_to("編集", "/posts/#{@post.id}/edit")%>
@@ -20,6 +28,7 @@
                 <%= link_to("削除", "/posts/#{@post.id}/destroy") %>
             </li>
         </ul>
+        <% end %>
         </div>
     </div>
 </div>

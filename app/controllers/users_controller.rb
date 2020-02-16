@@ -2,10 +2,35 @@ class UsersController < ApplicationController
   def index
     @users=User.all
   end
+
   def new
   end
+
+  def logout
+    session[:user_id]=nil
+    flash[:notice]="ログアウトしました"
+    redirect_to("/posts/index")
+  end
+
+  def login_form
+  end
+
+  def login
+    @user=User.find_by(email: params[:email], password: params[:password])
+    if @user
+      flash[:notice]="ログインしました"
+      session[:user_id]=@user.id
+      redirect_to("/posts/index")
+    else
+      flash[:notice]="メールアドレスまたはパスワードが間違っています"
+      @email=params[:email]
+      @password=params[:password]
+      render("users/login_form")
+    end
+  end
+
   def create
-    @user=User.new(name: params[:name], email: params[:email])
+    @user=User.new(name: params[:name], email: params[:email], password: params[:password])
     if @user.save
       if params[:image] #アイコン画像が選択された場合のみ変更
         image=params[:image]
@@ -16,22 +41,26 @@ class UsersController < ApplicationController
       flash[:notice]="ユーザー登録しました"
       redirect_to("/posts/index")
     else
-      flash[:notice]="ユーザー名、メールアドレスを入力してください"
+      flash[:notice]="ユーザー名、メールアドレス、パスワードを入力してください"
       render("users/new")
     end
   end
+
   def show
     @user=User.find_by(id: params[:id])
   end
+
   def destroy
     @user=User.find_by(id: params[:id])
     @user.destroy
     flash[:notice]="アカウントを削除しました"
     redirect_to("/users/index")
   end
+
   def edit
     @user=User.find_by(id: params[:id])
   end
+
   def update
     @user=User.find_by(id: params[:id])
     @user.name=params[:name]

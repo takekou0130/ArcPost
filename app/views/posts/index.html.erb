@@ -1,11 +1,18 @@
 <div class="post-container">
     <% @posts.each do |post|%>
+    <% post_user=post.user %>
     <div class="post-index-item card">
         <img src=" <%= "/content_image/#{post.image_name}" %>" class="card-img-top">
         <div class="card-body">
         <h5 class="card-title">
-            ユーザー名
-            <%# ユーザー名にする %>
+          <img src="
+            <% if post_user.image_name%>
+            <%= "/user_image/#{post_user.image_name}" %>
+            <% else%>
+            <%= "/initial_user_icon.jpg" %>
+            <% end %>
+            ">
+          <%= link_to(post_user.name, "/users/#{post_user.id}") %>
         </h5>
         <p class="card-text">
           <%= link_to(post.content, "/posts/#{post.id}") %>
