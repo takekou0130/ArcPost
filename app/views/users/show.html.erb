@@ -1,6 +1,6 @@
 <div class="post-container">
-    <div class="post-index-item card">
-        <div class="card-body">
+ <div class="post-index-item card">
+    <div class="card-body">
         <img class="user_image" src="
              <% if @user.image_name==nil %>
                 <%= "/initial_user_icon.jpg" %>
@@ -24,6 +24,27 @@
             </li>
         </ul>
         <%end %>
+    </div>
+    <div class="users-post">
+    <% @posts.each do |post|%>
+        <%# 投稿画像%>
+        <img src=" <%= "/content_image/#{post.image_name}" %>" class="card-img-top">
+        <div class="card-body">
+        <%# 投稿内容%>
+        <div class="card-text">
+        <%# いいね%>
+            <h4 class="like-count">
+                <%= "いいね！ #{post.like_counter}件" %>
+            </h4>
+        <%# コメント%>
+            <h3>
+                <%= link_to(post.content, "/posts/#{post.id}") %>
+            </h3>
+        </div>
+       
         </div>
     </div>
+    <%end%>
+    </div>
+ </div>
 </div>

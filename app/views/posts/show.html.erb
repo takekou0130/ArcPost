@@ -10,7 +10,7 @@
             <% else%>
             <%= "/initial_user_icon.jpg" %>
             <% end %>
-            ">
+            ",  class="user-icon">
           <%= link_to(post_user.name, "/users/#{post_user.id}") %>
         </h5>
         <p class="card-text card-content">
@@ -19,6 +19,17 @@
         <p class="card-text card-time">
           <%= @post.updated_at %>
         </p>
+         <%# いいねボタン%>
+          <% if Like.find_by(user_id: @current_user.id, post_id: @post.id)%>
+           <%= link_to("/likes/#{@post.id}/destroy", {method: "post"}) do%>
+            <span class="fa fa-heart like-btn"></span>
+           <% end %>
+          <% else %>
+           <%= link_to("/likes/#{@post.id}/create", {method: "post"}) do%>
+            <span class="fa fa-heart unlike-btn"></span>
+           <% end %>
+          <%end%>
+          <%= @post.like_counter %>
         <%if @current_user.id==post_user.id %> <%#ユーザー本人の投稿の時だけ表示%>
          <ul class="card-text">
             <li>

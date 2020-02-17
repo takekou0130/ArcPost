@@ -2,21 +2,36 @@
     <% @posts.each do |post|%>
     <% post_user=post.user %>
     <div class="post-index-item card">
-        <img src=" <%= "/content_image/#{post.image_name}" %>" class="card-img-top">
+        <%# ユーザー情報%>
         <div class="card-body">
         <h5 class="card-title">
-          <img src="
-            <% if post_user.image_name%>
-            <%= "/user_image/#{post_user.image_name}" %>
-            <% else%>
-            <%= "/initial_user_icon.jpg" %>
-            <% end %>
-            ">
+        <%# ユーザー画像%>
+            <img src="
+                <% if post_user.image_name%>
+                <%= "/user_image/#{post_user.image_name}" %>
+                <% else%>
+                <%= "/initial_user_icon.jpg" %>
+                <% end %>
+            ", class="user-icon">
+        <%# ユーザー名%>
           <%= link_to(post_user.name, "/users/#{post_user.id}") %>
         </h5>
-        <p class="card-text">
-          <%= link_to(post.content, "/posts/#{post.id}") %>
-        </p>
+        </div>
+        <%# 投稿画像%>
+        <img src=" <%= "/content_image/#{post.image_name}" %>" class="card-img-top">
+        <div class="card-body">
+        <%# 投稿内容%>
+        <div class="card-text">
+        <%# いいね%>
+            <h4 class="like-count">
+                <%= "いいね！ #{post.like_counter}件" %>
+            </h4>
+
+        <%# コメント%>
+            <h3>
+                <%= link_to(post.content, "/posts/#{post.id}") %>
+            </h3>
+        </div>
        
         </div>
     </div>
