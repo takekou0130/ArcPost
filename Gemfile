@@ -55,3 +55,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# googlemapを表示する
+gem "gmaps4rails"
+
+# 住所から緯度と経度を取得する
+gem "geocoder"

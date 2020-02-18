@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   def create
     image=params[:image]
     if image
-      @post=Post.new(content: params[:content], user_id: @current_user.id)
+      @post=Post.new(content: params[:content], user_id: @current_user.id, address: params[:address])
       @post.save
       @post.image_name="#{@post.id}.jpg"
       @post.save
