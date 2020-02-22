@@ -1,4 +1,18 @@
 class UsersController < ApplicationController
+  # start before_action
+  before_action :authenticate_user, {only: [:index, :logout, :show, :destroy, :edit, :update]}
+  before_action :forbid_login_user, {only: [:new, :login_form, :login, :create]}
+  before_action :ensure_current_user_user, {only: [:destroy, :edit, :update]}
+
+  # 他のユーザーへのアクセス制限
+  def ensure_current_user_user
+    if @current_user.id != params[:id]
+      flash[:notice]="他のユーザーは編集・削除できません"
+      redirect_to("/posts/index")
+    end
+  end
+  # end before_action
+
   def index
     @users=User.all
   end

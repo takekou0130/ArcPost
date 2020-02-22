@@ -16,6 +16,9 @@
         <p class="card-text card-content">
           <%= @post.content %>
         </p>
+         <p class="card-text card-content">
+          <%= @post.address %>
+        </p>
         <p class="card-text card-time">
           <%= @post.updated_at %>
         </p>
@@ -30,6 +33,23 @@
            <% end %>
           <%end%>
           <%= @post.like_counter %>
+          <%# google map%>
+        <div id="map"></div>
+        <script>
+        function initMap(){
+            let latlng = {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}
+            let map = new google.maps.Map(document.getElementById('map'), {
+            center: latlng,
+            zoom: 13
+            });
+            let marker = new google.maps.Marker({
+              position: latlng,
+              map: map
+            });
+        }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOaunUSriwP_vXm54XijVArdxsNnxYjO0&callback=initMap" async defer>
+        </script>
         <%if @current_user.id==post_user.id %> <%#ユーザー本人の投稿の時だけ表示%>
          <ul class="card-text">
             <li>

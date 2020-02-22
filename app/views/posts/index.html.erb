@@ -22,6 +22,11 @@
         <div class="card-body">
         <%# 投稿内容%>
         <div class="card-text">
+        <%# 住所%>
+            <span class="fas fa-map-marker"></span>
+            <h3>
+                <%= post.address %>
+            </h3>
         <%# いいね%>
             <h4 class="like-count">
                 <%= "いいね！ #{post.like_counter}件" %>

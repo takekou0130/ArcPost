@@ -1,4 +1,17 @@
 class PostsController < ApplicationController
+  # start before_action
+  before_action :authenticate_user, {only: [:new, :create, :destroy, :edit, :update]}
+  before_action :ensure_current_user_post, {only: [:destroy, :edit, :update]}
+  # 他のユーザーの投稿へのアクセス制限
+  def ensure_current_user_post
+     @post=Post.find_by(id: params[:id])
+     if @current_user.id != @post.user_id
+      flash[:notice]="他のユーザーの投稿です"
+      redirect_to("/posts/index")
+     end
+  end
+  # end before_action
+
   def index
     @posts=Post.all.order(updated_at: :desc)
     
