@@ -1,8 +1,19 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.post-container{
-    margin-top: 100px;
+.post-user-name{
+    margin-left: 15px;
+    display: inline;
+}
+.f-container{
+    display: flex;
+    align-items: flex-end;
+}
+.post-address{
+    margin-left: 5px;
+}
+.left-shift{
+    margin-left: auto;
 }
 .post-index-item{
     width: 50%;
@@ -10,24 +21,66 @@
 }
 .card-time{
     color: grey;
+    border-radius: 0;
 }
+.card-title{
+    margin-bottom:0rem!important;
+}
+
 .like-btn{
     color: red;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .unlike-btn{
     color: grey;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
 }
-.like-count{
+.card-text h4{
     color: grey;
     font-size: 1.2rem;
 }
+.card-text h3{
+    margin-top: 15px;
+}
+
 #map{
-    height: 400px;
+    height: 350px;
+    margin: 10px auto 20px auto;
+    width: 80%
 }
 .fa-map-marker{
-    color: red;
+    color: rgba(219, 6, 6, 0.822);
     font-size: 2rem;
     font-weight: 900;
     font-family: FontAwesome;
     content: "\f041";
+}
+.post-form{
+    margin: 40px auto;
+    width: 50%;
+}
+.heading-message{
+    opacity: 50%;
+}
+.form-item{
+    margin-bottom: 50px;
+}
+.form-item p{
+    margin-bottom: 0;
+}
+.col-md-6{
+    padding: 0 0!important;
+}
+
+
+@media(max-width:767px){
+    .post-index-item{
+        width: 100%;
+    }
+    .post-form{
+        width: 100%;
+    }
 }

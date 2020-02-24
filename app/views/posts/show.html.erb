@@ -1,7 +1,9 @@
-<div class="post-container">
-    <div class="post-index-item card">
-        <img src=" <%= "/content_image/#{@post.image_name}" %>" class="card-img-top">
-        <div class="card-body">
+<div class="post-show-container">
+  <div class="row color-set">
+  <%# 左側のcol start%>
+    <div class="post-index-item card col-md-6 col-12">
+      <%# ユーザー情報 %>
+      <div class="card-body color-set">
         <h5 class="card-title">
         <% post_user=@post.user %>
           <img src="
@@ -11,18 +13,23 @@
             <%= "/initial_user_icon.jpg" %>
             <% end %>
             ",  class="user-icon">
-          <%= link_to(post_user.name, "/users/#{post_user.id}") %>
+          <%= link_to(post_user.name, "/users/#{post_user.id}", {class: "no-link"}) %>
         </h5>
-        <p class="card-text card-content">
+      </div>
+      <%# 投稿画像 %>
+        <img src=" <%= "/content_image/#{@post.image_name}" %>" class="card-img-top">
+    </div>
+    <%# 左側のcol end%>
+
+    <%# 右側のcol start%>
+    <div class="col-12 col-md-6">
+     <%# 投稿詳細 %>
+      <div class="card-body">
+      <%# 投稿内容%>
+        <h3 class="card-text card-content">
           <%= @post.content %>
-        </p>
-         <p class="card-text card-content">
-          <%= @post.address %>
-        </p>
-        <p class="card-text card-time">
-          <%= @post.updated_at %>
-        </p>
-         <%# いいねボタン%>
+        </h3>
+       <%# いいねボタン%>
           <% if Like.find_by(user_id: @current_user.id, post_id: @post.id)%>
            <%= link_to("/likes/#{@post.id}/destroy", {method: "post"}) do%>
             <span class="fa fa-heart like-btn"></span>
@@ -33,6 +40,24 @@
            <% end %>
           <%end%>
           <%= @post.like_counter %>
+      
+        <div class="f-container card-text">
+          <div class="f-item"> <%# 住所マーク%>
+          <span class="fas fa-map-marker"></span>
+          </div>
+          <div class="f-item"> <%# 住所%>
+          <h4 class="post-address">
+              <%= @post.address %>
+          </h4>
+          </div>
+          <div class="f-item left-shift"> <%# 更新日%>
+          <h4>
+              <%= @post.updated_at %>
+          </h4>
+          </div>
+        </div>
+        
+      
           <%# google map%>
         <div id="map"></div>
         <script>
@@ -51,15 +76,16 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOaunUSriwP_vXm54XijVArdxsNnxYjO0&callback=initMap" async defer>
         </script>
         <%if @current_user.id==post_user.id %> <%#ユーザー本人の投稿の時だけ表示%>
-         <ul class="card-text">
-            <li>
-                <%= link_to("編集", "/posts/#{@post.id}/edit")%>
-            </li>
-            <li>
-                <%= link_to("削除", "/posts/#{@post.id}/destroy") %>
-            </li>
-        </ul>
-        <% end %>
+         <div class="f-container ml-3">
+            <div class="f-item">
+                <%= link_to("編集", "/posts/#{@post.id}/edit", {class: "no-link"})%>
+            </div>
+            <div class="f-item ml-3">
+                <%= link_to("削除", "/posts/#{@post.id}/destroy", {class: "no-link"}) %>
+            </div>
         </div>
+        <% end %>
     </div>
+    </div>
+  </div>
 </div>

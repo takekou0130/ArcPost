@@ -3,7 +3,8 @@
     <% post_user=post.user %>
     <div class="post-index-item card">
         <%# ユーザー情報%>
-        <div class="card-body">
+        <%= link_to("/users/#{post_user.id}") do %>
+        <div class="card-body color-set">
         <h5 class="card-title">
         <%# ユーザー画像%>
             <img src="
@@ -14,31 +15,40 @@
                 <% end %>
             ", class="user-icon">
         <%# ユーザー名%>
-          <%= link_to(post_user.name, "/users/#{post_user.id}") %>
+        <div class="post-user-name no-link">
+          <%= post_user.name %>
+        </div>
         </h5>
         </div>
-        <%# 投稿画像%>
-        <img src=" <%= "/content_image/#{post.image_name}" %>" class="card-img-top">
-        <div class="card-body">
-        <%# 投稿内容%>
-        <div class="card-text">
-        <%# 住所%>
-            <span class="fas fa-map-marker"></span>
-            <h3>
-                <%= post.address %>
-            </h3>
-        <%# いいね%>
-            <h4 class="like-count">
-                <%= "いいね！ #{post.like_counter}件" %>
-            </h4>
-
-        <%# コメント%>
-            <h3>
-                <%= link_to(post.content, "/posts/#{post.id}") %>
-            </h3>
-        </div>
-       
-        </div>
+        <% end %>
+        <%# 投稿内容 %>
+        <%= link_to("/posts/#{post.id}") do %>
+            <%# 投稿画像%>
+            <img src=" <%= "/content_image/#{post.image_name}" %>" class="card-img-top">
+            <div class="card-body color-set">
+                <div class="card-text">
+                    <div class="f-container">
+                        <div class="f-item"> <%# 住所マーク%>
+                        <span class="fas fa-map-marker"></span>
+                        </div>
+                        <div class="f-item"> <%# 住所%>
+                        <h4 class="post-address">
+                            <%= post.address %>
+                        </h4>
+                        </div>
+                        <div class="f-itemn left-shift"> <%# いいね%>
+                            <h4>
+                                <%= "いいね！ #{post.like_counter}件" %>
+                            </h4>
+                        </div>
+                    </div>
+                    <%# コメント%>
+                    <h3 class="no-link">
+                        <%= post.content %>
+                    </h3>
+                </div>
+            </div>
+        <% end %>
     </div>
     <%end%>
 </div>

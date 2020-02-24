@@ -1,13 +1,17 @@
-<div class="post-container">
-    <div class="post-form text-center">
+<div class="post-form alert alert-dark text-center">
         <%= form_tag("/posts/#{@post.id}/update") do %>
         <div class="form-body">
-            <p>コメント</p>
-            <textarea name="content" value="<%= @post.content %>"></textarea>
-            <div class="submit-container">
-            <input type="submit" value="編集">
+            <div class="form-item">
+              <p>コメント</p>
+              <textarea name="content"><%= @post.content %></textarea>
+            </div>
+            <div class="form-item">
+              <p>スポット名・住所</p>
+              <input name="address" value="<%= @post.address %>">
+            </div>
+            <div class="form-item">
+              <input type="submit" value="編集">
             </div>
         </div>  
         <% end %>
-    </div>
 </div>

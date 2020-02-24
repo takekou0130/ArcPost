@@ -1,17 +1,19 @@
 <div class="home-container">
-    <div class="home-top-content text-center">
+    <div class="home-top-content text-center centering">
         <h1>ArcPost</h1>
         <p>建築好きが集まるSNS</p>
         <div class="btn-container">
-        <a class="btn btn-primary" href="/posts/index">タイムラインをのぞく</a>
+        <a class="btn btn-info" href="/posts/index">タイムラインをのぞいてみる</a>
+        </div>
+        <%#ログイン時には非常時%>
+        <% if @current_user == nil%>
+        <div class="btn-container mt-4 mb-4">
+        <a class="btn btn-success" href="/users/create">ユーザー登録</a>
         </div>
         <div class="btn-container mt-4 mb-4">
-        <a class="btn btn-primary" href="/users/create">ユーザー登録</a>
+        <a class="btn btn-success" href="/login">ログイン（登録済みの方）</a>
         </div>
-        <div class="btn-container mt-4 mb-4">
-        <a class="btn btn-primary" href="/login">ログイン（登録済みの方）</a>
-        </div>
-        
+        <% end %>
     </div>
 </div>
 

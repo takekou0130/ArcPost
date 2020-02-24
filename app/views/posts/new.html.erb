@@ -1,18 +1,23 @@
-<div class="post-container">
-    <div class="post-form text-center">
-        <h1 class="heading-message">Let's Post!!</h1>
+
+<div class="post-form alert alert-dark text-center">
+        <h3 class="heading-message mb-4">お気に入りのスポットの写真を投稿しよう!!</h3>
         <%= form_tag("/posts/create", {multipart: true}) do %>
         <div class="form-body">
-            <p>コメント</p>
-            <textarea name="content"></textarea>
-            <p>画像</p>
-            <input name="image", type="file">
-            <p>スポット名・住所</p>
-            <input name="address">
-            <div class="submit-container">
-            <input type="submit" value="シェア">
+            <div class="form-item">
+              <p>投稿する画像を選択してください</p>
+              <input name="image", type="file">
+            </div>
+            <div class="form-item">
+              <p>コメント</p>
+              <textarea name="content"></textarea>
+            </div>
+            <div class="form-item">
+              <p>スポット名・住所</p>
+              <input name="address">
+            </div>
+            <div class="form-item">
+              <input type="submit" value="シェア">
             </div>
         </div>  
         <% end %>
-    </div>
 </div>
