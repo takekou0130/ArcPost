@@ -1,16 +1,18 @@
-<div class="post-container">
-    <div class="post-form text-center">
-        <h1 class="heading-message">ログイン</h1>
-        <%= form_tag("/login") do %>
-        <div class="form-body">
+<div class="post-form alert alert-dark text-center">
+    <h3 class="heading-message mb-4">ログイン</h3>
+    <%= form_tag("/login") do %>
+    <div class="form-body">
+        <div class="form-item">
             <p>メールアドレス</p>
             <input name="email" value="<%= @email %>">
+        </div>
+        <div class="form-item">
             <p>パスワード</p>
             <input name="password" type="password" value="<%= @password %>">
-            <div class="submit-container">
-            <input type="submit" value="ログイン">
-            </div>
-        </div>  
-        <% end %>
-    </div>
+        </div>
+        <div>
+            <input type="submit" value="ログインする">
+        </div>
+    </div>  
+    <% end %>
 </div>

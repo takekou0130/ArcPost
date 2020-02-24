@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   # 他のユーザーへのアクセス制限
   def ensure_current_user_user
-    if @current_user.id != params[:id]
+    if @current_user.id != params[:id].to_i
       flash[:notice]="他のユーザーは編集・削除できません"
       redirect_to("/posts/index")
     end

@@ -1,50 +1,88 @@
+<div class="color-set">
+<%# start user info %>
+<div class="user-info text-center pt-5">
+    <img src="
+        <% if @user.image_name==nil %>
+            <%= "/initial_user_icon.jpg" %>
+        <% else %>
+            <%= "/user_image/#{@user.image_name}" %>
+        <% end %>
+    " class="user-icon-lg"> 
+    <h3 class="mt-2">
+        <%= @user.name %>
+    </h3>
+    <h5 class="text-secondary">
+        <%= @user.email%>
+    </h5>
+    <%if @current_user.id==@user.id%> <%# ユーザー本人だけ編集できる%>
+    <ul class="f-container-center no-dot pl-0">
+        <li class="f-item mr-2">
+            <%= link_to("編集", "/users/#{@user.id}/edit", {class: "no-link"})%>
+        </li>
+        <li class="f-item ml-2">
+            <%= link_to("削除", "/users/#{@user.id}/destroy", {class: "no-link"}) %>
+        </li>
+    </ul>
+    <%end %>
+</div>
+<%# end user info %>
+
+<%# start user's post %>
 <div class="post-container">
- <div class="post-index-item card">
-    <div class="card-body">
-        <img class="user_image" src="
-             <% if @user.image_name==nil %>
-                <%= "/initial_user_icon.jpg" %>
-             <% else %>
+<% @posts.each do |post|%>
+    <div class="post-index-item card">
+        <%# ユーザー情報 %>
+        <%= link_to("/users/#{@user.id}") do %>
+        <div class="card-body color-set">
+        <h5 class="card-title">
+        <%# ユーザー画像 %>
+            <img src="
+                <% if @user.image_name%>
                 <%= "/user_image/#{@user.image_name}" %>
-             <% end %>
-        ">
-        <h5 class="card-title">
-            <%= @user.name %>
+                <% else%>
+                <%= "/initial_user_icon.jpg" %>
+                <% end %>
+                ",  class="user-icon">
+        <%# ユーザー名 %>
+                <div class="post-user-name no-link">
+                <%= @user.name %>
+                </div>
         </h5>
-        <h5 class="card-title">
-            <%= @user.email%>
-        </h5>
-        <%if @current_user.id==@user.id%> <%# ユーザー本人だけ編集できる%>
-         <ul class="card-text">
-            <li>
-                <%= link_to("編集", "/users/#{@user.id}/edit")%>
-            </li>
-            <li>
-                <%= link_to("削除", "/users/#{@user.id}/destroy") %>
-            </li>
-        </ul>
-        <%end %>
-    </div>
-    <div class="users-post">
-    <% @posts.each do |post|%>
-        <%# 投稿画像%>
-        <img src=" <%= "/content_image/#{post.image_name}" %>" class="card-img-top">
-        <div class="card-body">
-        <%# 投稿内容%>
-        <div class="card-text">
-        <%# いいね%>
-            <h4 class="like-count">
-                <%= "いいね！ #{post.like_counter}件" %>
-            </h4>
-        <%# コメント%>
-            <h3>
-                <%= link_to(post.content, "/posts/#{post.id}") %>
-            </h3>
         </div>
-       
-        </div>
+        <% end %>
+        <%# 投稿内容 %>
+        <%= link_to("/posts/#{post.id}") do %>
+            <%# 投稿画像 %>
+            <img src=" <%= "/content_image/#{post.image_name}" %>" class="card-img-top">
+             <div class="card-body color-set">
+                <div class="card-text">
+                    <div class="f-container">
+                        <div class="f-item"> <%# 住所マーク%>
+                        <span class="fas fa-map-marker"></span>
+                        </div>
+                        <div class="f-item"> <%# 住所%>
+                        <h4 class="post-address">
+                            <%= post.address %>
+                        </h4>
+                        </div>
+                        <div class="f-itemn left-shift"> <%# いいね%>
+                            <h4>
+                                <%= "いいね！ #{post.like_counter}件" %>
+                            </h4>
+                        </div>
+                    </div>
+                    <%# コメント%>
+                    <h3 class="no-link">
+                        <%= post.content %>
+                    </h3>
+                </div>
+            </div>
+        <% end %>
     </div>
-    <%end%>
-    </div>
- </div>
+<%end%>
+</div>
+
+
+
+<%# end user's post %>
 </div>

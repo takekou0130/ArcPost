@@ -10,16 +10,27 @@ body{
     font-family: sans-serif;
 }
 .post-container{
-    background-color: #31444D;
+    background-color: #d6d8d9;
 }
-
+.color-set{
+    background-color: rgba(60, 64, 65, 0.082);
+}
 .current-user-item{
     color: white!important;
 }
 .user-icon{
     height:50px;
+    width: 50px;
+    object-fit: cover;
     border-radius: 50%;
 }
+.user-icon-lg{
+    height:100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .no-link{
     color: #333333;
 }
@@ -32,7 +43,15 @@ body{
 .notice{
     margin-bottom: 0!important;
 }
-.color-set{
-    background-color: rgba(60, 64, 65, 0.082);
 
+.f-container{
+    display: flex;
+    align-items: flex-end;
+}
+.f-container-center{
+    display: flex;
+    justify-content: center;
+}
+.no-dot{
+    list-style: none;
 }

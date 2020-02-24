@@ -30,7 +30,9 @@
           <%= @post.content %>
         </h3>
        <%# いいねボタン%>
-          <% if Like.find_by(user_id: @current_user.id, post_id: @post.id)%>
+        <%# ログイン中ならいいねボタン%>
+        <% if @current_user %>
+          <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
            <%= link_to("/likes/#{@post.id}/destroy", {method: "post"}) do%>
             <span class="fa fa-heart like-btn"></span>
            <% end %>
@@ -40,7 +42,12 @@
            <% end %>
           <%end%>
           <%= @post.like_counter %>
-      
+        <%# ログアウト中ならいいね件数 %>
+        <% else %>
+          <h4 class="like-count">
+              <%= "いいね！ #{@post.like_counter}件" %>
+          </h4>
+        <% end %>
         <div class="f-container card-text">
           <div class="f-item"> <%# 住所マーク%>
           <span class="fas fa-map-marker"></span>
@@ -75,7 +82,7 @@
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOaunUSriwP_vXm54XijVArdxsNnxYjO0&callback=initMap" async defer>
         </script>
-        <%if @current_user.id==post_user.id %> <%#ユーザー本人の投稿の時だけ表示%>
+        <%if @current_user&&@current_user.id==post_user.id %> <%#ユーザー本人の投稿の時だけ表示%>
          <div class="f-container ml-3">
             <div class="f-item">
                 <%= link_to("編集", "/posts/#{@post.id}/edit", {class: "no-link"})%>
@@ -86,6 +93,7 @@
         </div>
         <% end %>
     </div>
+    <%# 右側のcol end%>
     </div>
   </div>
 </div>

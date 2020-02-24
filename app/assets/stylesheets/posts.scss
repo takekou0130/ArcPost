@@ -5,10 +5,7 @@
     margin-left: 15px;
     display: inline;
 }
-.f-container{
-    display: flex;
-    align-items: flex-end;
-}
+
 .post-address{
     margin-left: 5px;
 }
@@ -39,6 +36,10 @@
 
 }
 .card-text h4{
+    color: grey;
+    font-size: 1.2rem;
+}
+.like-count{
     color: grey;
     font-size: 1.2rem;
 }
