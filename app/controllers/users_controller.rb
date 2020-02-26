@@ -53,6 +53,7 @@ class UsersController < ApplicationController
         File.binwrite("public/user_image/#{@user.image_name}", image.read)
       end
       flash[:notice]="ユーザー登録しました"
+      session[:user_id]=@user.id #登録すると自動的にログイン
       redirect_to("/posts/index")
     else
       flash[:notice]="ユーザー名、メールアドレス、パスワードを入力してください"
