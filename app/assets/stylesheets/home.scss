@@ -3,15 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .home-container{
     min-height: 600px;
-    height: 100%;
     background-image: url('top.jpg');
     width: 100%;
     background-size: cover;
+   
    
 }
 .home-top-content{
     color: white;
     opacity: 90%;
+    padding-top: 100px;
+    width: 60%;
+    margin: 0 auto;
 }
 .home-top-content h1{
     font-size: 4rem;

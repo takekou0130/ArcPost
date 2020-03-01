@@ -34,12 +34,7 @@ body{
 .no-link{
     color: #333333;
 }
-.centering{
-    position: absolute;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+
 .notice{
     margin-bottom: 0!important;
 }
@@ -60,14 +55,3 @@ body{
     margin-bottom: 0!important;
 }
 
-@media(max-width:768px){
-    .centering{
-        position: relative;
-        top:auto;
-        left: auto;
-        margin-top: 20px;
-        
-       
-    }
-   
-}
