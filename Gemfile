@@ -63,6 +63,9 @@ gem "gmaps4rails"
 # 住所から緯度と経度を取得する
 gem "geocoder"
 
+# APIkeyを非公開にするために環境変数を利用する
+gem "dotenv-rails"
+
 group :production do #add this line
   gem 'pg'
 end
