@@ -2,10 +2,12 @@ FROM ruby:2.5.1
 
 WORKDIR /ArcPost
 
-RUN apt-get update
-RUN apt-get install -y postgresql-client
-RUN apt-get install -y libpq-dev
-
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+  postgresql-client \
+  libpq-dev \
+  nodejs \
+  build-essential
 
 COPY ./Gemfile /ArcPost/Gemfile
 COPY ./Gemfile.lock /ArcPost/Gemfile.lock
